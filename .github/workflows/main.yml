@@ -1,25 +1,37 @@
-name: Build and Deploy
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js 18
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-      - name: Install dependencies
+          node-version: 14
+
+      - name: Install Dependencies
         run: npm install
-      - name: Build project
-        run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@v2
+        uses: nwtgck/actions-netlify@v1
         with:
-          publish: build
-          build: npm run build
-          token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          command: 'deploy'
+          args: '--prod'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: 90291c6a-72a9-43fc-a51e-85573ff86b8f
