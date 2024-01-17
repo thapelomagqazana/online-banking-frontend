@@ -62,7 +62,7 @@ const Dashboard = () => {
         };
         fetchBalance();
 
-    }, []); // Empty dependency array to run the effect only once on component mount
+    }, [navigate]); // Empty dependency array to run the effect only once on component mount
 
     const data = [
       { name: 'January', spending: 200 },

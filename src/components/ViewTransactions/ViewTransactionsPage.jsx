@@ -54,7 +54,7 @@ const ViewTransactionsPage = () => {
         };
     
         fetchTransactions();
-    }, []);
+    }, [navigate]);
 
         return (
             <div>
