@@ -235,7 +235,10 @@ h1, h2, h3 {
   justify-content: space-between;
 }
 
-.quick-links h2 {
+.quick-links h2,
+.notifications h2,
+.transaction-amounts h2,
+.transaction-distribution h2{
   font-size: 1.8rem;
   margin-bottom: 15px;
   color: #333;
@@ -264,12 +267,6 @@ h1, h2, h3 {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.notifications h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #333;
 }
 
 .notification-item {
@@ -495,7 +492,8 @@ h1, h2, h3 {
   transition: background-color 0.3s ease;
 }
 
-.back-button {
+.back-button,
+.logout-button {
   background-color: transparent; /* Secondary orange color for the transfer button */
   color: #3498db;
   font-size: 1.2rem;
@@ -506,7 +504,8 @@ h1, h2, h3 {
   transition: background-color 0.3s ease;
 }
 
-.back-button:hover {
+.back-button:hover,
+.logout-button:hover{
   color: #2980b9;
 }
 
@@ -524,6 +523,23 @@ h1, h2, h3 {
 .success-message {
   color: #27ae60; /* Green color for success messages */
   margin-bottom: 15px;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+
+.transaction-table td,
+.transaction-table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.transaction-table th {
+  background-color: #f2f2f2;
 }
 
 /* Responsive Design */

@@ -30,7 +30,7 @@ const ViewTransactionsPage = () => {
                 Cookies.remove('authToken');
 
                 // Notify the user about the token expiration (you can use a toast or other notification method)
-                alert('Unauthorized access. Please log in again.');
+                // setErr('Unauthorized access. Please log in again.');
             
                 // Redirect to the login page
                 navigate('/login');
@@ -41,7 +41,7 @@ const ViewTransactionsPage = () => {
                 Cookies.remove('authToken');
 
                 // Notify the user about the token expiration (you can use a toast or other notification method)
-                alert('Session expired. Please log in again.');
+                // alert('Session expired. Please log in again.');
             
                 // Redirect to the login page
                 navigate('/login');
