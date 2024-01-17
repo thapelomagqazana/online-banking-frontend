@@ -319,12 +319,16 @@ h1, h2, h3 {
 /* View Transactions Page Styles */
 
 /* Overall Page Styles */
-.view-transactions-page {
+.view-transactions-page,
+.transfer-funds-page,
+.pay-bills-page{
   padding: 40px;
 }
 
 /* Heading Styles */
-.view-transactions-page h1 {
+.view-transactions-page h1,
+.transfer-funds-page h1,
+.pay-bills-page h1{
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333; /* Dark text color for headings */
@@ -347,11 +351,11 @@ h1, h2, h3 {
 }
 
 /* Differentiate Transaction Types */
-.income-type {
+.debit-type {
   color: #27ae60; /* Green for income transactions */
 }
 
-.expense-type {
+.credit-type {
   color: #e74c3c; /* Red for expense transactions */
 }
 
@@ -442,5 +446,89 @@ h1, h2, h3 {
 @media (max-width: 768px) {
   .transaction-item {
     padding: 15px;
+  }
+}
+
+/* Transfer Form Styles */
+.transfer-form,
+.bill-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Adjust column ratios as needed */
+  grid-gap: 20px;
+}
+
+/* Form Labels */
+.transfer-form label,
+.bill-form label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Input Fields */
+.transfer-form input,
+.bill-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.transfer-form input:focus
+.bill-form input:focus {
+  border-color: #3498db; /* Highlight border color on focus */
+}
+
+.transfer-button,
+.bill-button{
+  background-color: #e67e22; /* Secondary orange color for the transfer button */
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button {
+  background-color: transparent; /* Secondary orange color for the transfer button */
+  color: #3498db;
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  color: #2980b9;
+}
+
+.transfer-button:hover {
+  background-color: #d35400; /* Darker shade on hover */
+}
+
+/* Error Message Styles */
+.error-message {
+  color: #e74c3c; /* Contrasting color for error messages */
+  margin-bottom: 15px;
+}
+
+/* Success Message Styles */
+.success-message {
+  color: #27ae60; /* Green color for success messages */
+  margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .transfer-form {
+    grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
   }
 }

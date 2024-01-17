@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const ViewTransactionsPage = () => {
@@ -96,15 +96,15 @@ const ViewTransactionsPage = () => {
             ) : transactions.length > 0 ? (
               <ul className="transaction-list">
                 {transactions.map((transaction) => (
-                  <li key={transaction.id} className={`transaction-item ${transaction.type.toLowerCase()}-type`}>
+                <li key={transaction.id} className={`transaction-item ${transaction.type.toLowerCase()}-type`}>
                     <div className="transaction-details">
-                      <div>
+                    <div>
                         <p>{transaction.date}</p>
                         <p>{transaction.description}</p>
-                      </div>
-                      <p className="transaction-amount">{transaction.amount}</p>
                     </div>
-                  </li>
+                    <p className="transaction-amount">{transaction.amount}</p>
+                    </div>
+                </li>
                 ))}
               </ul>
             ) : (
@@ -117,7 +117,10 @@ const ViewTransactionsPage = () => {
                 <button onClick={() => fetchTransactions({ page: 1 })}>1</button>
                 <button onClick={() => fetchTransactions({ page: 2 })}>2</button>
                 <button onClick={() => fetchTransactions({ page: 2 })}>Next</button>
+                
             </div>
+            {/* Back Option */}
+            <Link to="/dashboard"><button className="back-button">Back</button></Link>
           </div>
         );
     };

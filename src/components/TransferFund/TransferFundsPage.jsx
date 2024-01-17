@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const TransferFundsPage = () => {
@@ -10,6 +10,7 @@ const TransferFundsPage = () => {
   const navigate = useNavigate();
 
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -19,6 +20,7 @@ const TransferFundsPage = () => {
   
     // Reset error when user is typing
     setError('');
+    setSuccessMessage("");
   };
   
 
@@ -41,8 +43,14 @@ const TransferFundsPage = () => {
       });
 
         if (response.ok) {
-            console.log('Funds transferred successfully!');
-            navigate("/dashboard");
+            const data = await response.json();
+            setSuccessMessage(data.message);
+            setError('');
+            // Reset form data
+            setFormData({
+              username: "",
+              amount: 0,
+            });
         } 
         else if (response.status === 401) {
             // Remove token from cookies
@@ -50,6 +58,8 @@ const TransferFundsPage = () => {
 
             // Notify the user about the token expiration (you can use a toast or other notification method)
             alert('Unauthorized access. Please log in again.');
+            setSuccessMessage("");
+            setError("");
         
             // Redirect to the login page
             navigate('/login');
@@ -60,6 +70,8 @@ const TransferFundsPage = () => {
 
             // Notify the user about the token expiration (you can use a toast or other notification method)
             alert('Session expired. Please log in again.');
+            setSuccessMessage("");
+            setError("");
         
             // Redirect to the login page
             navigate('/login');
@@ -67,30 +79,33 @@ const TransferFundsPage = () => {
         else {
             const errorData = await response.json();
             setError('Transfer funds failed: ' + errorData.message);
+            setSuccessMessage('');
         }
     } catch (error) {
       setError('Error transferring funds: ' + error.message);
+      setSuccessMessage('');
     }
   };
 
   return (
-    <div>
-        <header>
-            <h1>Transfer Funds</h1>
-        </header>
+    <div className="transfer-funds-page">
+        <h1>Transfer Funds</h1>
+        
         <main>
-            <form onSubmit={handleTransfer}>
+            <form className="transfer-form" onSubmit={handleTransfer}>
                 <label htmlFor="recipient">Recipient:</label>
                 <input type="text" id="recipient" name="username" value={formData.username} onChange={handleChange} required />
 
                 <label htmlFor="amount">Amount:</label>
                 <input type="number" id="amount" name="amount" value={formData.amount} onChange={handleChange} required />
-
-
-                {error && <p className="error-message">{error}</p>}
-
-                <button type="submit">Transfer Funds</button>
+                
+                <button className="transfer-button" type="submit">Transfer Funds</button>
+                {/* Back Option */}
+                <Link to="/dashboard"><button className="back-button">Back</button></Link>
             </form>
+
+            {error && <p className="error-message">{error}</p>}
+            {successMessage && <p className="success-message">{successMessage}</p>}
         </main>
     </div>  
   );

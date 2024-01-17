@@ -6,9 +6,15 @@ import { faCheckCircle, faUsers, faShieldAlt } from '@fortawesome/free-solid-svg
 const LandingPage = () => {
   return (
     <div className="landing-page">
+      <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+      <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"></link>
+
       {/* Hero Section */}
       <section className="hero-section">
-        <h1>Welcome to YourBank</h1>
+      <h1>
+        Welcome to <span style={{ fontFamily: 'Caveat, cursive' }}>Siyabhanga</span>
+      </h1>
         <p>Your trusted partner in financial management</p>
         
       </section>
@@ -25,7 +31,7 @@ const LandingPage = () => {
       </section>
 
       <section className="content-section">
-        <h2>New to YourBank?</h2>
+        <h2>New to <span style={{ fontFamily: 'Caveat, cursive' }}>Siyabhanga</span></h2>
         <p>Create an account to enjoy our services:</p>
         <div className="cta-buttons">
           <Link to="/register">
