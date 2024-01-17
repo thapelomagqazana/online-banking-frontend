@@ -1,0 +1,317 @@
+
+.landing-page {
+  background-color: #f8f8f8; /* Light gray background for the entire page */
+  color: #333; /* Default text color */
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 60vh; /* Adjust as needed */
+  background: url('pexels-mikhail-nilov-7534381.jpg') center/cover no-repeat; /* Replace 'hero-image.jpg' with your actual image */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff; /* Text color on top of the image */
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+
+
+/* CTA buttons */
+.login-button,
+.register-button,
+.auth-main button[type="submit"] {
+  background-color: #e67e22; /* Secondary orange color for CTAs */
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover,
+.register-button:hover,
+.auth-main button[type="submit"]:hover {
+  background-color: #d35400; /* Darker shade on hover */
+}
+
+/* Content Sections */
+.content-section {
+  background-color: #fff; /* White background for content sections */
+  padding: 40px 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  text-align: center;
+}
+
+/* Features and Benefits */
+.features-section {
+  background-color: #f8f8f8; /* Light gray background for features section */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+/* Feature Box */
+.feature-box {
+  text-align: center;
+  background-color: #fff; /* White background for feature boxes */
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.feature-box:hover {
+  transform: scale(1.05);
+}
+
+/* Typography */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f8f8; /* Light gray background for the entire authentication page */
+  color: #333; /* Default text color */
+}
+
+/* Header */
+.auth-page header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-page header h1 {
+  font-size: 2.5rem;
+  color: #333; /* Darker text color for headers */
+}
+
+/* Main Content */
+.auth-main {
+  width: 400px;
+  padding: 40px;
+  background-color: #fff; /* White background for the authentication form */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+/* Form */
+.auth-main form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-main label {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.auth-main input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.auth-main input:focus {
+  border-color: #3498db; /* Highlight border color on focus */
+}
+
+/* Password Toggle Button */
+.auth-main button[type="button"],
+.auth-main a {
+  background-color: transparent;
+  border: none;
+  color: #3498db; /* Blue color for the toggle button */
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.auth-main button[type="button"]:hover,
+.auth-main a:hover {
+  color: #2980b9; /* Darker shade on hover */
+}
+
+/* Error Message */
+.auth-main .error-message {
+  color: #e74c3c; /* Contrasting color for error messages */
+  margin-bottom: 20px;
+}
+
+/* Background Animation */
+.auth-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  opacity: 0.1;
+  z-index: -1;
+  animation: wave-animation 1.5s infinite alternate;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Adjust column ratios as needed */
+  grid-gap: 20px;
+  padding: 40px;
+}
+
+/* Account Balance Section */
+.account-balance {
+  background-color: #fff; /* White background for clarity */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  text-align: center;
+}
+
+.account-balance h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #3498db; /* Accent color for balance heading */
+}
+
+.account-balance p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333; /* Dark text color for balance amount */
+}
+
+/* Quick Links Section */
+.quick-links {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.quick-links div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quick-links h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.quick-link-button {
+  background-color: #e67e22; /* Secondary orange color for buttons */
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.quick-link-button:hover {
+  background-color: #d35400; /* Darker shade on hover */
+}
+
+/* Notifications Section */
+.notifications {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.notifications h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd; /* Subtle separator between notifications */
+}
+
+.notification-item:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+
+.notification-item p {
+  font-size: 1rem;
+  color: #555; /* Lighter text color for notification content */
+}
+
+/* Notification Badge */
+.notification-badge {
+  background-color: #e67e22;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 5px 8px;
+  border-radius: 50%;
+}
+
+/* Data Visualization (Example: Bar Chart) */
+.bar-chart {
+  margin-top: 20px;
+}
+
+.bar-chart h2 {
+  text-align: center;
+}
+
+/* Additional Styling for Data Visualization Can Be Added Here */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
+  }
+}
