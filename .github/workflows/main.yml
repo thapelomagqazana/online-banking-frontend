@@ -29,8 +29,6 @@ jobs:
 
     steps:
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@v1
-        with:
-          args: deploy --prod
+        run: npx netlify deploy --build --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
