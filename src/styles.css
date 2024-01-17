@@ -315,3 +315,132 @@ h1, h2, h3 {
     grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
   }
 }
+
+/* View Transactions Page Styles */
+
+/* Overall Page Styles */
+.view-transactions-page {
+  padding: 40px;
+}
+
+/* Heading Styles */
+.view-transactions-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333; /* Dark text color for headings */
+}
+
+/* Transaction List Styles */
+.transaction-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-item {
+  background-color: #fff; /* White background for each transaction item */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  transition: transform 0.3s ease;
+}
+
+/* Differentiate Transaction Types */
+.income-type {
+  color: #27ae60; /* Green for income transactions */
+}
+
+.expense-type {
+  color: #e74c3c; /* Red for expense transactions */
+}
+
+/* Hover Effect on Transaction Items */
+.transaction-item:hover {
+  transform: scale(1.02);
+}
+
+/* Transaction Details Styles */
+.transaction-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Filter and Sorting Options Styles (Example) */
+.filter-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-options select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Data Visualization (Example: Bar Chart) */
+.bar-chart {
+  margin-top: 20px;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #e67e22; /* Blue color for pagination buttons */
+  color: #fff;
+  padding: 8px 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #d35400; /* Darker shade on hover */
+}
+
+/* Loading Indicator Styles (Example) */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+/* Empty State Styles */
+.empty-state {
+  text-align: center;
+  margin-top: 40px;
+  color: #555; /* Darker text color for empty state */
+}
+
+/* Responsive Design (Example: Mobile Styles) */
+@media (max-width: 768px) {
+  .transaction-item {
+    padding: 15px;
+  }
+}
