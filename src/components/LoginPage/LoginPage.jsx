@@ -54,9 +54,18 @@ const LoginPage = () => {
           const authToken = data.token;
           // save it in Cookies
           Cookies.set('authToken', authToken);
-          
+
+          // Redirect to the dashboard or create account page based on the response
+          const redirectPath = data.redirect;
+
+          if (redirectPath === '/dashboard') {
+            navigate("/dashboard");
+          } else if (redirectPath === '/create-account') {
+            navigate("/create-account");
+          } else {
+            setError("Unexpected redirect path");
+          }   
         });
-        navigate("/dashboard");
       }
       else
       {

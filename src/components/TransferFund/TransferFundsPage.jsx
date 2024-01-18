@@ -1,16 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const TransferFundsPage = () => {
   const [formData, setFormData] = useState({
-        username: "",
+        accountNumber: 0,
         amount: 0,
+        recipientAccountNumber: "",
   });
   const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState('');
+
+  useEffect(() => {
+    // Fetch the active account on component mount
+    fetchActiveAccount();
+  }, []);
+
+  const fetchActiveAccount = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/account/active", {
+        method: "GET",
+        headers: {
+          'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const activeAccountData = await response.json();
+        console.log(activeAccountData.activeAccount.accountNumber);
+        // Assuming the backend returns an active account object
+        setFormData({
+          ...formData,
+          accountNumber: activeAccountData.activeAccount.accountNumber,
+        });
+      } else if (response.status === 401 || response.status === 403) {
+        Cookies.remove('authToken');
+        setError('Unauthorized access. Please log in again.');
+        setSuccessMessage("");
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        setError('Failed to fetch active account: ' + errorData.message);
+        setSuccessMessage('');
+      }
+    } catch (error) {
+      setError('Error fetching active account: ' + error.message);
+      setSuccessMessage('');
+    }
+  };
+
 
   const handleChange = (e) => {
     setFormData({
@@ -37,8 +78,9 @@ const TransferFundsPage = () => {
           Authorization: `Bearer ${Cookies.get('authToken') || ''}`,
         },
         body: JSON.stringify({
+          accountNumber: formData.accountNumber,
           amount: formData.amount,
-          username: formData.username,
+          recipientAccountNumber: formData.recipientAccountNumber,
         }),
       });
 
@@ -48,7 +90,7 @@ const TransferFundsPage = () => {
             setError('');
             // Reset form data
             setFormData({
-              username: "",
+              recipientAccountNumber: "",
               amount: 0,
             });
         } 
@@ -92,8 +134,12 @@ const TransferFundsPage = () => {
         
         <main>
             <form className="transfer-form" onSubmit={handleTransfer}>
-                <label htmlFor="recipient">Recipient:</label>
-                <input type="text" id="recipient" name="username" value={formData.username} onChange={handleChange} required />
+
+                {/* Hidden input for accountNumber */}
+                <input type="hidden" name="accountNumber" value={formData.accountNumber} />
+
+                <label htmlFor="recipientAccountNumber">Recipient Acc No:</label>
+                <input type="text" id="recipientAccountNumber" name="recipientAccountNumber" value={formData.recipientAccountNumber} onChange={handleChange} required />
 
                 <label htmlFor="amount">Amount:</label>
                 <input type="number" id="amount" name="amount" value={formData.amount} onChange={handleChange} required />

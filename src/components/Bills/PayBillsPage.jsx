@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const PayBillsPage = () => {
   const [formData, setFormData] = useState({
+        accountNumber: 0,
         billAmount: 0,
         billDescription: "",
   });
@@ -11,6 +12,46 @@ const PayBillsPage = () => {
 
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState('');
+
+  useEffect(() => {
+    // Fetch the active account on component mount
+    fetchActiveAccount();
+  }, []);
+
+  const fetchActiveAccount = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/account/active", {
+        method: "GET",
+        headers: {
+          'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const activeAccountData = await response.json();
+        console.log(activeAccountData.activeAccount.accountNumber);
+        // Assuming the backend returns an active account object
+        setFormData({
+          ...formData,
+          accountNumber: activeAccountData.activeAccount.accountNumber,
+        });
+      } else if (response.status === 401 || response.status === 403) {
+        Cookies.remove('authToken');
+        setError('Unauthorized access. Please log in again.');
+        setSuccessMessage("");
+        navigate('/login');
+      } else {
+        const errorData = await response.json();
+        setError('Failed to fetch active account: ' + errorData.message);
+        setSuccessMessage('');
+      }
+    } catch (error) {
+      setError('Error fetching active account: ' + error.message);
+      setSuccessMessage('');
+    }
+  };
+
 
   const handleChange = (e) => {
     setFormData({
@@ -37,6 +78,7 @@ const PayBillsPage = () => {
           Authorization: `Bearer ${Cookies.get('authToken') || ''}`,
         },
         body: JSON.stringify({
+          accountNumber: formData.accountNumber,
           billAmount: formData.billAmount,
           billDescription: formData.billDescription,
         }),
@@ -91,6 +133,9 @@ const PayBillsPage = () => {
         <h1>Pay Bills</h1>
         <main>
             <form className="bill-form" onSubmit={handlePayBill}>
+                {/* Hidden input for accountNumber */}
+                <input type="hidden" name="accountNumber" value={formData.accountNumber} />
+                
                 <label htmlFor="billDescription">Description:</label>
                 <input type="text" id="billDescription" name="billDescription" value={formData.billDescription} onChange={handleChange} required />
 
