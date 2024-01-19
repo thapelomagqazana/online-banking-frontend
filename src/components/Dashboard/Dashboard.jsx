@@ -212,7 +212,6 @@ const Dashboard = () => {
   
 
     const handleAccountChange = (e) => {
-      console.log(e.target.value);
       setSelectedAccount(e.target.value);
       setActiveAccount(e.target.value);
     };

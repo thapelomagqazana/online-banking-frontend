@@ -15,44 +15,45 @@ const PayBillsPage = () => {
 
   
 
-  const fetchActiveAccount = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/account/active", {
-        method: "GET",
-        headers: {
-          'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const activeAccountData = await response.json();
-        // Assuming the backend returns an active account object
-        setFormData({
-          ...formData,
-          accountNumber: activeAccountData.activeAccount.accountNumber,
-        });
-      } else if (response.status === 401 || response.status === 403) {
-        Cookies.remove('authToken');
-        setError('Unauthorized access. Please log in again.');
-        setSuccessMessage("");
-        navigate('/login');
-      } else {
-        const errorData = await response.json();
-        setError('Failed to fetch active account: ' + errorData.message);
-        setSuccessMessage('');
-      }
-    } catch (error) {
-      setError('Error fetching active account: ' + error.message);
-      setSuccessMessage('');
-    }
-  };
+  
 
   // eslint-disable-next-line
   useEffect(() => {
+    const fetchActiveAccount = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/account/active", {
+          method: "GET",
+          headers: {
+            'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          const activeAccountData = await response.json();
+          // Assuming the backend returns an active account object
+          setFormData({
+            ...formData,
+            accountNumber: activeAccountData.activeAccount.accountNumber,
+          });
+        } else if (response.status === 401 || response.status === 403) {
+          Cookies.remove('authToken');
+          setError('Unauthorized access. Please log in again.');
+          setSuccessMessage("");
+          navigate('/login');
+        } else {
+          const errorData = await response.json();
+          setError('Failed to fetch active account: ' + errorData.message);
+          setSuccessMessage('');
+        }
+      } catch (error) {
+        setError('Error fetching active account: ' + error.message);
+        setSuccessMessage('');
+      }
+    };
     // Fetch the active account on component mount
     fetchActiveAccount();
-  }, [fetchActiveAccount]);
+  }, [formData, navigate]);
 
 
   const handleChange = (e) => {
