@@ -16,6 +16,47 @@ const Dashboard = () => {
     // Declare a variable to store the Chart instance
     const transactionChartInstance = useRef(null);
 
+    
+
+
+
+  useEffect(() => {
+
+      // Fetch user accounts
+  const fetchAccounts = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/account/accounts", {
+        method: "GET",
+        headers: {
+          'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const accountsData = await response.json();
+        setAccounts(accountsData.accounts);
+
+      } else if (response.status === 401 || response.status === 403) {
+        Cookies.remove('authToken');
+        navigate('/login');
+      } else {
+        console.error('Failed to fetch accounts:', response.status);
+        setAccounts([]);
+      }
+    } catch (error) {
+      console.error('Error during accounts fetch:', error.message);
+      setAccounts([]);
+    }
+  };
+
+
+    fetchAccounts();
+  }, [navigate, selectedAccount]);
+
+  // Effect to fetch and update dashboard data when selectedAccount changes
+  useEffect(() => {
+
     const fetchDashboardData = async (accountId) => {
       try {
         // Fetch user's account balance from the server
@@ -69,6 +110,7 @@ const Dashboard = () => {
 
         if (responseTransactionDistribution.ok) {
           const data = await responseTransactionDistribution.json();
+          // console.log(data);
           setTransactionDistribution(data);
         } else {
           console.error('Failed to fetch transaction distribution:', responseTransactionDistribution.status);
@@ -86,7 +128,7 @@ const Dashboard = () => {
 
         if (responseTransactionAmounts.ok) {
           const data = await responseTransactionAmounts.json();
-          console.log(data);
+          // console.log(data);
           setTransactionAmounts(data.transactionAmounts);
         } else {
           console.error('Failed to fetch transaction distribution:', responseTransactionAmounts.status);
@@ -101,45 +143,11 @@ const Dashboard = () => {
     };
 
 
-  // Fetch user accounts
-  const fetchAccounts = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/account/accounts", {
-        method: "GET",
-        headers: {
-          'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const accountsData = await response.json();
-        setAccounts(accountsData.accounts);
-
-      } else if (response.status === 401 || response.status === 403) {
-        Cookies.remove('authToken');
-        navigate('/login');
-      } else {
-        console.error('Failed to fetch accounts:', response.status);
-        setAccounts([]);
-      }
-    } catch (error) {
-      console.error('Error during accounts fetch:', error.message);
-      setAccounts([]);
-    }
-  };
-
-  useEffect(() => {
-    fetchAccounts();
-  }, [navigate, selectedAccount]);
-
-  // Effect to fetch and update dashboard data when selectedAccount changes
-  useEffect(() => {
     if (selectedAccount) {
       fetchDashboardData(selectedAccount);
       setActiveAccount(selectedAccount);
     }
-  }, [selectedAccount]);
+  }, [selectedAccount, navigate]);
 
     // Function to set the selected account as active
   const setActiveAccount = async (accountId) => {
@@ -152,10 +160,10 @@ const Dashboard = () => {
         },
       });
 
-      if (response.ok)
-      {
-        console.log("Account activated: "+response);
-      }
+      // if (response.ok)
+      // {
+      //   console.log("Account activated: "+response);
+      // }
 
       if (!response.ok) {
         console.error('Failed to set active account:', response.status);

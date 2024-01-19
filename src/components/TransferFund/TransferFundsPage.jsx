@@ -13,10 +13,7 @@ const TransferFundsPage = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState('');
 
-  useEffect(() => {
-    // Fetch the active account on component mount
-    fetchActiveAccount();
-  }, []);
+
 
   const fetchActiveAccount = async () => {
     try {
@@ -30,7 +27,6 @@ const TransferFundsPage = () => {
 
       if (response.ok) {
         const activeAccountData = await response.json();
-        console.log(activeAccountData.activeAccount.accountNumber);
         // Assuming the backend returns an active account object
         setFormData({
           ...formData,
@@ -51,6 +47,12 @@ const TransferFundsPage = () => {
       setSuccessMessage('');
     }
   };
+
+  // eslint-disable-next-line
+  useEffect(() => {
+    // Fetch the active account on component mount
+    fetchActiveAccount();
+  }, [fetchActiveAccount]);
 
 
   const handleChange = (e) => {
