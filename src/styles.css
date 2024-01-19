@@ -185,7 +185,7 @@ h1, h2, h3 {
 }
 
 /* Background Animation */
-.auth-main::before {
+/* .auth-main::before {
   content: '';
   position: absolute;
   top: 0;
@@ -205,7 +205,7 @@ h1, h2, h3 {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 .dashboard {
   display: grid;

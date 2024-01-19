@@ -109,6 +109,7 @@ const LoginPage = () => {
           Don't have an account?{' '}
           <Link to="/register">Create one here</Link>
         </p>
+        <Link to="/"><button className="back-button">Back</button></Link>
       </main>
     </div>
   );

@@ -110,6 +110,7 @@ const RegisterPage = () => {
           Already have an account?{' '}
           <Link to="/login">Log in here</Link>
         </p>
+        <Link to="/"><button className="back-button">Back</button></Link>
       </main>
     </div>
   );
