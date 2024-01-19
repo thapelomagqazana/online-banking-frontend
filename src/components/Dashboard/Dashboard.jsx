@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [recentTransactions, setRecentTransactions] = useState([]);
     
     const [accounts, setAccounts] = useState([]);
-    const [selectedAccount, setSelectedAccount] = useState(null);
+    const [selectedAccount, setSelectedAccount] = useState("");
     const navigate = useNavigate();
     // Declare a variable to store the Chart instance
     const transactionChartInstance = useRef(null);
@@ -143,11 +143,13 @@ const Dashboard = () => {
     };
 
 
-    if (selectedAccount) {
+    if (selectedAccount !== "") {
       fetchDashboardData(selectedAccount);
       setActiveAccount(selectedAccount);
     }
   }, [selectedAccount, navigate]);
+
+  
 
     // Function to set the selected account as active
   const setActiveAccount = async (accountId) => {
@@ -174,6 +176,13 @@ const Dashboard = () => {
       // Handle error case if needed
     }
   };
+
+  // Initialize selectedAccount to the first account if available
+  useEffect(() => {
+    if (accounts.length > 0 && selectedAccount === "") {
+      setSelectedAccount(accounts[0]._id);
+    }
+  }, [accounts, selectedAccount]);
 
     useEffect(() => {
       // Visualize transaction amounts using Chart.js
@@ -212,8 +221,10 @@ const Dashboard = () => {
   
 
     const handleAccountChange = (e) => {
-      setSelectedAccount(e.target.value);
-      setActiveAccount(e.target.value);
+      // console.log(selectedAccount);
+      const selectedAccountId = e.target.value;
+      setSelectedAccount(selectedAccountId);
+      setActiveAccount(selectedAccountId);
     };
 
     return (

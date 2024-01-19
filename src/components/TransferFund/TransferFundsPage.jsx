@@ -4,8 +4,8 @@ import Cookies from "js-cookie";
 
 const TransferFundsPage = () => {
   const [formData, setFormData] = useState({
-        accountNumber: 0,
-        amount: 0,
+        accountNumber: "",
+        amount: "",
         recipientAccountNumber: "",
   });
   const navigate = useNavigate();
@@ -18,54 +18,67 @@ const TransferFundsPage = () => {
 
 
   
-  useEffect(() => {
-    const fetchActiveAccount = async () => {
-      try {
-        const response = await fetch("https://online-banking-app-production.up.railway.app/account/active", {
-          method: "GET",
-          headers: {
-            'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
-            'Content-Type': 'application/json',
-          },
-        });
+  // useEffect(() => {
+  //   const fetchActiveAccount = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:5000/account/active", {
+  //         method: "GET",
+  //         headers: {
+  //           'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
+  //           'Content-Type': 'application/json',
+  //         },
+  //       });
   
-        if (response.ok) {
-          const activeAccountData = await response.json();
-          // Assuming the backend returns an active account object
-          setFormData({
-            ...formData,
-            accountNumber: activeAccountData.activeAccount.accountNumber,
-          });
-        } else if (response.status === 401 || response.status === 403) {
-          Cookies.remove('authToken');
-          setError('Unauthorized access. Please log in again.');
-          setSuccessMessage("");
-          navigate('/login');
-        } else {
-          const errorData = await response.json();
-          setError('Failed to fetch active account: ' + errorData.message);
-          setSuccessMessage('');
-        }
-      } catch (error) {
-        setError('Error fetching active account: ' + error.message);
-        setSuccessMessage('');
-      }
-    };
-    // Fetch the active account on component mount
-    fetchActiveAccount();
-  }, [formData, navigate]);
+  //       if (response.ok) {
+  //         const activeAccountData = await response.json();
+  //         // Assuming the backend returns an active account object
+  //         setFormData({
+  //           ...formData,
+  //           accountNumber: activeAccountData.activeAccount.accountNumber,
+  //         });
+  //       } else if (response.status === 401 || response.status === 403) {
+  //         Cookies.remove('authToken');
+  //         setError('Unauthorized access. Please log in again.');
+  //         setSuccessMessage("");
+  //         navigate('/login');
+  //       } else {
+  //         const errorData = await response.json();
+  //         setError('Failed to fetch active account: ' + errorData.message);
+  //         setSuccessMessage('');
+  //       }
+  //     } catch (error) {
+  //       setError('Error fetching active account: ' + error.message);
+  //       setSuccessMessage('');
+  //     }
+  //   };
+  //   // Fetch the active account on component mount
+  //   fetchActiveAccount();
+  // }, [formData, navigate]);
 
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+    // console.log('Before State Update:', formData);
+    setFormData((prevData) => {
+      const updatedData = {
+        ...prevData,
+        [e.target.name]: e.target.value,
+      };
+      console.log(updatedData); // Add this line for debugging
+      return updatedData;
     });
+
+    // console.log('After State Update:', formData);
   
-    // Reset error when user is typing
+    // Reset error when the user is typing
     setError('');
-    setSuccessMessage("");
+    setSuccessMessage('');
+
+
   };
+
+  useEffect(() => {
+    console.log('Updated Form Data:', formData);
+  }, [formData]);
   
 
   const handleTransfer = async (e) => {
@@ -74,7 +87,7 @@ const TransferFundsPage = () => {
     // Implement transfer funds to the recipient
     try {
         // console.log(localStorage.getItem('authToken'));
-      const response = await fetch("https://online-banking-app-production.up.railway.app/transaction/transfer", {
+      const response = await fetch("http://localhost:5000/transaction/transfer", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +107,7 @@ const TransferFundsPage = () => {
             // Reset form data
             setFormData({
               recipientAccountNumber: "",
-              amount: 0,
+              amount: "",
             });
         } 
         else if (response.status === 401) {
@@ -139,13 +152,14 @@ const TransferFundsPage = () => {
             <form className="transfer-form" onSubmit={handleTransfer}>
 
                 {/* Hidden input for accountNumber */}
-                <input type="hidden" name="accountNumber" value={formData.accountNumber} />
+                <label htmlFor="senderAccountNumber">Sender Acc No:</label>
+                <input type="text" name="accountNumber" value={formData.accountNumber} onChange={handleChange} required/>
 
                 <label htmlFor="recipientAccountNumber">Recipient Acc No:</label>
                 <input type="text" id="recipientAccountNumber" name="recipientAccountNumber" value={formData.recipientAccountNumber} onChange={handleChange} required />
 
                 <label htmlFor="amount">Amount:</label>
-                <input type="number" id="amount" name="amount" value={formData.amount} onChange={handleChange} required />
+                <input type="text" id="amount" name="amount" value={formData.amount} onChange={handleChange} required />
                 
                 <button className="transfer-button" type="submit">Transfer Funds</button>
                 {/* Back Option */}
