@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [recentTransactions, setRecentTransactions] = useState([]);
     
     const [accounts, setAccounts] = useState([]);
-    const [selectedAccount, setSelectedAccount] = useState(accounts[0]);
+    const [selectedAccount, setSelectedAccount] = useState(null);
     const navigate = useNavigate();
     // Declare a variable to store the Chart instance
     const transactionChartInstance = useRef(null);
