@@ -21,7 +21,7 @@ const TransferFundsPage = () => {
   useEffect(() => {
     const fetchActiveAccount = async () => {
       try {
-        const response = await fetch("http://localhost:5000/account/active", {
+        const response = await fetch("https://online-banking-app-production.up.railway.app/account/active", {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
@@ -74,7 +74,7 @@ const TransferFundsPage = () => {
     // Implement transfer funds to the recipient
     try {
         // console.log(localStorage.getItem('authToken'));
-      const response = await fetch("http://localhost:5000/transaction/transfer", {
+      const response = await fetch("https://online-banking-app-production.up.railway.app/transaction/transfer", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

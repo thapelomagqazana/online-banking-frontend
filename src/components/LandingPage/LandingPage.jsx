@@ -10,6 +10,10 @@ const LandingPage = () => {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
       <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"></link>
 
+      <head>
+        <title>Siyabhanga - Your Financial Partner</title>
+      </head>
+
       {/* Hero Section */}
       <section className="hero-section">
       <h1>
@@ -58,6 +62,11 @@ const LandingPage = () => {
           <p>Count on us as your reliable partner in financial management.</p>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="footer">
+        <p>&copy; 2024 Thapelo Magqazana. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

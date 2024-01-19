@@ -4,6 +4,20 @@
   color: #333; /* Default text color */
 }
 
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333; /* Choose a background color for the footer */
+  color: #fff; /* Choose a text color for the footer */
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+}
+
 /* Hero Section */
 .hero-section {
   position: relative;
@@ -748,6 +762,11 @@ h1, h2, h3 {
 /* Additional Media Query for screens with a maximum width of 360px */
 @media only screen and (max-width: 360px) {
   /* Adjust styles for screens with a maximum width of 360px */
+
+  .footer {
+    padding: 10px;
+    font-size: 12px;
+  }
   
   .hero-section {
     height: 50vh; /* Adjusted height for smaller screens */
@@ -1115,4 +1134,813 @@ h1, h2, h3 {
   }
 
   /* Add more styles as needed for screens with a maximum width of 360px */
+}
+
+@media screen and (min-width: 360px) and (max-width: 480px) {
+  .footer {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .landing-page {
+    /* Adjust styles for the landing page on screens between 360px and 480px */
+
+    /* For example, you can reduce the font size for better readability on smaller screens */
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    /* Adjust other styles as needed */
+  }
+
+  .hero-section {
+    /* Adjust hero section styles for smaller screens if necessary */
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .content-section {
+    /* Adjust content section styles for smaller screens if necessary */
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .cta-buttons {
+      button {
+        padding: 8px 15px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .features-section {
+    /* Adjust features section styles for smaller screens if necessary */
+    .feature-box {
+      padding: 10px;
+      h2 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .auth-page {
+    /* Adjust styles for the auth page on screens between 360px and 480px */
+  }
+
+  .auth-page header h1 {
+    font-size: 1.8rem;
+  }
+
+  .auth-main {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .auth-main form {
+    margin-bottom: 20px;
+  }
+
+  .auth-main label {
+    font-size: 1rem;
+  }
+
+  .auth-main input {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+  }
+
+  .auth-main button[type="button"],
+  .auth-main button[type="submit"],
+  .auth-main a {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  .error-message {
+    font-size: 0.9rem;
+  }
+
+  .dashboard {
+    /* Adjust styles for the dashboard on screens between 360px and 480px */
+
+    grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
+
+    /* Adjust other styles as needed */
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .account-selector {
+    margin-bottom: 10px;
+  }
+
+  #accountSelect {
+    width: 100%;
+  }
+
+  .navbar-buttons {
+    flex-direction: column;
+    button {
+      margin-bottom: 10px;
+    }
+  }
+
+  .account-balance h2 {
+    font-size: 1.5rem;
+  }
+
+  .account-balance p {
+    font-size: 1.2rem;
+  }
+
+  .quick-links h2 {
+    font-size: 1.5rem;
+  }
+
+  .quick-links .quick-link-button {
+    font-size: 1rem;
+  }
+
+  .notifications h2 {
+    font-size: 1.5rem;
+  }
+
+  .notification-item p {
+    font-size: 1rem;
+  }
+
+  .transaction-distribution h2 {
+    font-size: 1.5rem;
+  }
+
+  .transaction-table {
+    font-size: 1rem;
+  }
+
+  .pay-bills-page {
+    /* Adjust styles for the pay bills page on screens between 360px and 480px */
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .bill-form {
+      width: 100%;
+    }
+
+    label {
+      font-size: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    .bill-button,
+    .back-button {
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+
+    .error-message,
+    .success-message {
+      font-size: 0.9rem;
+    }
+  }
+
+  .transfer-funds-page {
+    /* Adjust styles for the transfer funds page on screens between 360px and 480px */
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .transfer-form {
+      width: 100%;
+    }
+
+    label {
+      font-size: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    .transfer-button,
+    .back-button {
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+
+    .error-message,
+    .success-message {
+      font-size: 0.9rem;
+    }
+  }
+
+  .view-transactions-page {
+    /* Adjust styles for the view transactions page on screens between 360px and 480px */
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .filter-options {
+      display: block;
+      margin-bottom: 20px;
+
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .transaction-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .transaction-item {
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      button {
+        font-size: 1rem;
+        padding: 8px 15px;
+        margin: 0 5px;
+      }
+    }
+
+    .back-button {
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+
+    .empty-state {
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+
+    .loading-indicator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+    }
+  }
+
+  .view-profile-page {
+    /* Adjust styles for the view profile page on screens between 360px and 480px */
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .user-profile-section {
+      margin-bottom: 20px;
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      .account-summary-section {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .account-card {
+          padding: 15px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+
+          p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      .empty-state {
+        font-size: 1rem;
+        margin-top: 20px;
+      }
+    }
+
+    .update-profile-button {
+      font-size: 1rem;
+      padding: 12px 20px;
+      margin-right: 10px;
+    }
+
+    .back-button {
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+  }
+
+  .create-account-page {
+    /* Adjust styles for the create account page on screens between 360px and 480px */
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .create-account-form {
+      label {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+      }
+
+      .create-account-button {
+        font-size: 1rem;
+        padding: 12px 20px;
+        margin-top: 15px;
+      }
+    }
+
+    .back-button {
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+  }
+
+  .update-profile-page {
+    /* Adjust styles for the update profile page on screens between 360px and 480px */
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      label {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+      }
+
+      .password-strength {
+        /* Add styles for the password strength indicator */
+      }
+    }
+
+    .update-profile-button, .back-button {
+      font-size: 1rem;
+      padding: 12px 20px;
+      margin-top: 15px;
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  /* Hero Section */
+  .hero-section {
+    height: 40vh; /* Adjust as needed for smaller screens */
+  }
+
+  .hero-section h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+    margin-bottom: 15px;
+  }
+
+  .hero-section p {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    margin-bottom: 20px;
+  }
+
+  /* CTA buttons */
+  .login-button,
+  .register-button,
+  .auth-main button[type="submit"] {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    padding: 8px 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Content Sections */
+  .content-section {
+    padding: 30px 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Features and Benefits */
+  .features-section {
+    padding: 30px 15px; /* Adjust padding for smaller screens */
+    gap: 15px; /* Adjust gap for smaller screens */
+  }
+
+  /* Feature Box */
+  .feature-box {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Typography */
+  body {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+
+  /* Header */
+  .auth-page header h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+
+  /* Main Content */
+  .auth-main {
+    width: 100%; /* Adjust width for smaller screens */
+    padding: 20px 10px; /* Adjust padding for smaller screens */
+  }
+
+  /* Form */
+  .auth-main input {
+    padding: 10px; /* Adjust padding for smaller screens */
+    margin-bottom: 15px;
+  }
+
+  /* Password Toggle Button */
+  .auth-main button[type="button"],
+  .auth-main a {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  /* Error Message */
+  .auth-main .error-message {
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  /* Dashboard */
+  .dashboard {
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  /* Navigation Section */
+  .navbar {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .account-selector {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  #accountSelect {
+    padding: 6px; /* Adjust padding for smaller screens */
+  }
+
+  .navbar-buttons {
+    margin-left: 5px; /* Adjust margin for smaller screens */
+  }
+
+  .navbar-button {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+    margin-left: 5px; /* Adjust margin for smaller screens */
+  }
+
+  /* Account Balance Section */
+  .account-balance {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .account-balance h2 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+    margin-bottom: 8px; /* Adjust margin for smaller screens */
+  }
+
+  .account-balance p {
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
+  }
+
+  /* Quick Links Section */
+  .quick-links {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .quick-links h2,
+  .notifications h2,
+  .transaction-amounts h2,
+  .transaction-distribution h2 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
+  }
+
+  .quick-link-button {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    padding: 8px 15px; /* Adjust padding for smaller screens */
+    margin-bottom: 8px; /* Adjust margin for smaller screens */
+    margin-right: 5px; /* Adjust margin for smaller screens */
+  }
+
+  /* Notifications Section */
+  .notifications {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .notification-item {
+    padding: 8px 0; /* Adjust padding for smaller screens */
+  }
+
+  .notification-item p {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  /* Data Visualization (Example: Bar Chart) */
+  .bar-chart h2 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+
+  /* Additional Styling for Transaction Amounts Section */
+  .transaction-amounts {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Additional Styling for Transaction Distribution Section */
+  .transaction-distribution {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .transaction-table td {
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+
+  /* View Transactions Page Styles */
+
+  /* Overall Page Styles */
+  .view-transactions-page,
+  .transfer-funds-page,
+  .pay-bills-page,
+  .create-account-page,
+  .view-profile-page {
+    padding: 20px 10px; /* Adjust padding for smaller screens */
+  }
+
+  /* Heading Styles */
+  .view-transactions-page h1,
+  .transfer-funds-page h1,
+  .pay-bills-page h1,
+  .create-account-page h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  /* Transaction List Styles */
+  .transaction-item {
+    padding: 15px; /* Adjust padding for smaller screens */
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  /* Search Bar Styles */
+  .search-bar {
+    padding: 8px; /* Adjust padding for smaller screens */
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  /* Filter and Sorting Options Styles (Example) */
+  .filter-options {
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  .filter-options select {
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+
+  /* Data Visualization (Example: Bar Chart) */
+  .bar-chart {
+    margin-top: 15px; /* Adjust margin for smaller screens */
+  }
+
+  /* Pagination Styles */
+  .pagination {
+    margin-top: 15px; /* Adjust margin for smaller screens */
+  }
+
+  .pagination button {
+    padding: 6px 12px; /* Adjust padding for smaller screens */
+  }
+
+  /* Loading Indicator Styles (Example) */
+  .loading-indicator {
+    height: 80px; /* Adjust height for smaller screens */
+  }
+
+  /* Empty State Styles */
+  .empty-state {
+    margin-top: 30px; /* Adjust margin for smaller screens */
+  }
+
+  /* Transfer Form Styles */
+  .transfer-form,
+  .bill-form,
+  .create-account-form {
+    grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
+  }
+
+  /* Form Labels */
+  .transfer-form label,
+  .bill-form label,
+  .create-account-form label {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    margin-bottom: 6px; /* Adjust margin for smaller screens */
+  }
+
+  /* Input Fields */
+  .transfer-form input,
+  .bill-form input,
+  .create-account-form input {
+    padding: 10px; /* Adjust padding for smaller screens */
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
+  }
+
+  /* Transfer Button */
+  .transfer-button,
+  .bill-button,
+  .create-account-button,
+  .update-profile-button {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Back and Logout Buttons */
+  .back-button,
+  .logout-button {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Error Message Styles */
+  .error-message {
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
+  }
+
+  /* Success Message Styles */
+  .success-message {
+    margin-bottom: 10px; /* Adjust margin for smaller screens */
+  }
+
+  /* View Profile Page Styles */
+  .view-profile-page h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  .view-profile-page button {
+    margin-right: 5px; /* Adjust margin for smaller screens */
+  }
+
+  /* User Profile Section */
+  .user-profile-section {
+    margin-top: 20px; /* Adjust margin for smaller screens */
+  }
+
+  /* User Profile Image */
+  .user-profile-image {
+    width: 80px; /* Adjust width for smaller screens */
+    height: 80px; /* Adjust height for smaller screens */
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  /* Account Summary Section */
+  .user-profile-section ul {
+    gap: 15px; /* Adjust gap for smaller screens */
+  }
+
+  /* Individual Account Card Styles */
+  .account-card {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Account Type Icons */
+  .account-type-icon {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    margin-bottom: 8px; /* Adjust margin for smaller screens */
+  }
+
+  /* Progress Bars */
+  .progress-bar {
+    height: 8px; /* Adjust height for smaller screens */
+    margin-top: 8px; /* Adjust margin for smaller screens */
+  }
+
+  /* Empty State Styles */
+  .empty-state {
+    margin-top: 30px; /* Adjust margin for smaller screens */
+  }
+
+  /* Update Profile Page Styles */
+  .update-profile-page {
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  /* Form Group Styles */
+  .form-group {
+    margin-bottom: 15px; /* Adjust margin for smaller screens */
+  }
+
+  .form-group label {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .form-group input {
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+
+  /* Password Strength Styles */
+  .password-strength {
+    margin-top: 8px; /* Adjust margin for smaller screens */
+    font-size: 12px; /* Adjust font size for smaller screens */
+  }
+
+  /* User Profile Preview Styles */
+  .user-profile-preview {
+    max-width: 80px; /* Adjust max-width for smaller screens */
+    max-height: 80px; /* Adjust max-height for smaller screens */
+    margin-top: 8px; /* Adjust margin for smaller screens */
+  }
+
+  /* Success and Error Message Styles */
+  .success-message,
+  .error-message {
+    margin-top: 8px; /* Adjust margin for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .footer {
+    padding: 20px;
+    font-size: 16px;
+  }
 }

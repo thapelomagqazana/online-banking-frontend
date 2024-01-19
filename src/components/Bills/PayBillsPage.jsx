@@ -21,7 +21,7 @@ const PayBillsPage = () => {
   useEffect(() => {
     const fetchActiveAccount = async () => {
       try {
-        const response = await fetch("http://localhost:5000/account/active", {
+        const response = await fetch("https://online-banking-app-production.up.railway.app/account/active", {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
@@ -74,7 +74,7 @@ const PayBillsPage = () => {
     // Implement logic to pay the bill
     try {
         
-      const response = await fetch("http://localhost:5000/bill/pay", {
+      const response = await fetch("https://online-banking-app-production.up.railway.app/bill/pay", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

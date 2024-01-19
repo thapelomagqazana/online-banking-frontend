@@ -11,7 +11,7 @@ const ViewProfilePage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/profile/view", {
+        const response = await fetch("https://online-banking-app-production.up.railway.app/profile/view", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${Cookies.get('authToken') || ''}`,
@@ -26,7 +26,7 @@ const ViewProfilePage = () => {
 
           // Fetch user accounts based on the userId
           // const userId = userData._id; // Assuming the userId is available in the user data
-          const accountsResponse = await fetch("http://localhost:5000/account/accounts", {
+          const accountsResponse = await fetch("https://online-banking-app-production.up.railway.app/account/accounts", {
             method: "GET",
             headers: {
               "Authorization": `Bearer ${Cookies.get('authToken') || ''}`,

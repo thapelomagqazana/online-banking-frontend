@@ -23,7 +23,7 @@ const CreateAccountPage = () => {
 
     try {
       // Assuming you have a backend route for creating an account
-      const response = await fetch("http://localhost:5000/account/create", {
+      const response = await fetch("https://online-banking-app-production.up.railway.app/account/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

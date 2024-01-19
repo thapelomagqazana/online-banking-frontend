@@ -12,7 +12,7 @@ const ViewTransactionsPage = () => {
         try
         {
             const queryString = new URLSearchParams(queryParams).toString();
-            const response = await fetch(`http://localhost:5000/transaction/history?${queryString}`, {
+            const response = await fetch(`https://online-banking-app-production.up.railway.app/transaction/history?${queryString}`, {
                 headers: {
                     Authorization: `Bearer ${Cookies.get('authToken') || ''}`,
                 },

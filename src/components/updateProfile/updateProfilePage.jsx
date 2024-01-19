@@ -26,7 +26,7 @@ const UpdateProfilePage = () => {
 
     try {
             // Assuming you have a backend route for creating an account
-            const response = await fetch("http://localhost:5000/profile/update", {
+            const response = await fetch("https://online-banking-app-production.up.railway.app/profile/update", {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
