@@ -66,10 +66,14 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className="footer">
-        <p>&copy; 2024 Thapelo Magqazana. All rights reserved.</p>
-      </footer>
+      <section>
+        <div>
+          {/* Footer Section */}
+          <footer className="footer">
+            <p>&copy; 2024 Thapelo Magqazana. All rights reserved.</p>
+          </footer>
+        </div>
+      </section>
     </div>
   );
 };
