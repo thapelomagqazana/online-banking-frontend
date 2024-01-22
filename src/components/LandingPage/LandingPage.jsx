@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faUsers, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Landing page component displaying welcome message, account access options, features, and footer.
+ */
 const LandingPage = () => {
   return (
     <div className="landing-page">

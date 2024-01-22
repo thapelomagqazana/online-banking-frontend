@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
+
+/**
+ * Component for creating a new user account.
+ */
 const CreateAccountPage = () => {
+  // React hooks for managing state and navigation
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
@@ -11,6 +16,10 @@ const CreateAccountPage = () => {
   });
   const [error, setError] = useState(null);
 
+  /**
+   * Handles changes in the input fields.
+   * @param {Object} e - Event object.
+   */
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -18,6 +27,10 @@ const CreateAccountPage = () => {
     });
   };
 
+  /**
+   * Handles the submission of the account creation form.
+   * @param {Object} e - Event object.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,10 +50,6 @@ const CreateAccountPage = () => {
 
       if (response.ok) {
         console.log("Account created successfully!");
-        // setFormData({
-        //     title: "",
-        //     accountNumber: "",
-        //   });
         // Redirect to the dashboard after creating an account
         navigate("/view-profile");
       } else {
@@ -51,7 +60,7 @@ const CreateAccountPage = () => {
       setError("Error during account creation: " + error.message);
     }
   };
-
+  // Render the component
   return (
     <div className="create-account-page">
       <h1>Create Account</h1>
@@ -61,10 +70,9 @@ const CreateAccountPage = () => {
         <label htmlFor="title">Title:</label>
           <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required />
 
-
         <label htmlFor="accountNumber">Account Number:</label>
             <input type="text" name="accountNumber" value={formData.accountNumber} onChange={handleChange} required />
-        {/* Add other fields... */}
+
         <button className="create-account-button" type="submit">Create Account</button>
       </form>
       <Link to="/view-profile"><button className="back-button">Back</button></Link>

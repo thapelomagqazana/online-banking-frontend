@@ -2,12 +2,21 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
+/**
+ * ViewTransactionsPage component displays a list of transactions with search, filter, and sort options.
+ * It fetches transactions from the server and provides pagination controls.
+ * @returns {JSX.Element} Rendered ViewTransactionsPage component.
+ */
 const ViewTransactionsPage = () => {
     const [transactions, setTransactions] = useState([]);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
-    // Memoize the fetchTransactions function
+    /**
+     * Memoized function to fetch transactions from the server.
+     * @param {Object} queryParams - Additional query parameters for filtering, sorting, and searching transactions.
+     * @returns {Promise<void>} Promise representing the asynchronous fetch operation.
+     */
     const fetchTransactions = useCallback(async (queryParams = {}) => {
         try
         {
@@ -28,9 +37,6 @@ const ViewTransactionsPage = () => {
                 setLoading(false);
                 // Remove token from cookies
                 Cookies.remove('authToken');
-
-                // Notify the user about the token expiration (you can use a toast or other notification method)
-                // setErr('Unauthorized access. Please log in again.');
             
                 // Redirect to the login page
                 navigate('/login');
@@ -39,9 +45,6 @@ const ViewTransactionsPage = () => {
                 setLoading(false);
                 // Remove token from cookies
                 Cookies.remove('authToken');
-
-                // Notify the user about the token expiration (you can use a toast or other notification method)
-                // alert('Session expired. Please log in again.');
             
                 // Redirect to the login page
                 navigate('/login');

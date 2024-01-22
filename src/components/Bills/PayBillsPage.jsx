@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
+/**
+ * Component for the Pay Bills page.
+ * Allows users to pay bills by providing account number, bill amount, and description.
+ */
+
 const PayBillsPage = () => {
+  // State to manage form data, navigation, and error/success messages
   const [formData, setFormData] = useState({
         accountNumber: "",
         billAmount: "",
@@ -13,49 +19,10 @@ const PayBillsPage = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState('');
 
-  
-
-  
-
-  // // eslint-disable-next-line
-  // useEffect(() => {
-  //   const fetchActiveAccount = async () => {
-  //     try {
-  //       const response = await fetch("http://localhost:5000/account/active", {
-  //         method: "GET",
-  //         headers: {
-  //           'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
-  //           'Content-Type': 'application/json',
-  //         },
-  //       });
-  
-  //       if (response.ok) {
-  //         const activeAccountData = await response.json();
-  //         // Assuming the backend returns an active account object
-  //         setFormData({
-  //           ...formData,
-  //           accountNumber: activeAccountData.activeAccount.accountNumber,
-  //         });
-  //       } else if (response.status === 401 || response.status === 403) {
-  //         Cookies.remove('authToken');
-  //         setError('Unauthorized access. Please log in again.');
-  //         setSuccessMessage("");
-  //         navigate('/login');
-  //       } else {
-  //         const errorData = await response.json();
-  //         setError('Failed to fetch active account: ' + errorData.message);
-  //         setSuccessMessage('');
-  //       }
-  //     } catch (error) {
-  //       setError('Error fetching active account: ' + error.message);
-  //       setSuccessMessage('');
-  //     }
-  //   };
-  //   // Fetch the active account on component mount
-  //   fetchActiveAccount();
-  // }, [formData, navigate]);
-
-
+  /**
+   * Handles form input changes.
+   * @param {Object} e - Event object.
+   */
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -66,11 +33,13 @@ const PayBillsPage = () => {
     setError('');
     setSuccessMessage("");
   };
-  
 
+   /**
+   * Handles the bill payment process.
+   * @param {Object} e - Event object.
+   */
   const handlePayBill = async (e) => {
     e.preventDefault();
-
     // Implement logic to pay the bill
     try {
         
@@ -97,17 +66,19 @@ const PayBillsPage = () => {
           billAmount: "",
           billDescription: "",
         });
-      } 
+      }
+      // Handle unauthorized access 
       else if (response.status === 401) {
         // Remove token from cookies
         Cookies.remove('authToken');
 
-        // Notify the user about the token expiration (you can use a toast or other notification method)
+        // Notify the user about the token is unauthorized (you can use a toast or other notification method)
         setError('Unauthorized access. Please log in again.');
     
         // Redirect to the login page
         navigate('/login');
-      } 
+      }
+      // Handle session expiration
       else if (response.status === 403) {
           // Remove token from cookies
           Cookies.remove('authToken');
@@ -120,8 +91,6 @@ const PayBillsPage = () => {
           navigate('/login');
       } 
       else {
-        // Handle unauthorized or expired token
-        // You can use the handleTokenExpiration function here
         const errorData = await response.json();
         setSuccessMessage("");
         setError('Pay bill failed: ' + errorData.message);
@@ -132,12 +101,13 @@ const PayBillsPage = () => {
     }
   };
 
+  // Render the component
   return (
     <div className="pay-bills-page">
         <h1>Pay Bills</h1>
         <main>
             <form className="bill-form" onSubmit={handlePayBill}>
-                
+                {/* Form fields */}
                 <label htmlFor="accountNumber">Sender Acc No:</label>
                 <input type="text" name="accountNumber" value={formData.accountNumber} onChange={handleChange} required />
                 
@@ -147,11 +117,12 @@ const PayBillsPage = () => {
                 <label htmlFor="billAmount">Bill Amount:</label>
                 <input type="text" id="billAmount" name="billAmount" value={formData.billAmount} onChange={handleChange} required />
 
+                {/* Submit button and Back option */}
                 <button className="bill-button" type="submit">Pay Bill</button>
-                {/* Back Option */}
                 <Link to="/dashboard"><button className="back-button">Back</button></Link>
             </form>
 
+            {/* Display error and success messages */}
             {error && <p className="error-message">{error}</p>}
             {successMessage && <p className="success-message">{successMessage}</p>}
         </main>

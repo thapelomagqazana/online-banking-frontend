@@ -4,25 +4,28 @@ import Cookies from "js-cookie";
 import Chart from 'chart.js/auto';
 
 
+/**
+ * Component for displaying the user dashboard, including account details, recent transactions, and charts.
+ */
 const Dashboard = () => {
-    const [balance, setBalance] = useState(null);
-    const [transactionDistribution, setTransactionDistribution] = useState({});
-    const [transactionAmounts, setTransactionAmounts] = useState([]);
-    const [recentTransactions, setRecentTransactions] = useState([]);
-    
-    const [accounts, setAccounts] = useState([]);
-    const [selectedAccount, setSelectedAccount] = useState("");
-    const navigate = useNavigate();
-    // Declare a variable to store the Chart instance
-    const transactionChartInstance = useRef(null);
+  // State variables to manage dashboard data
+  const [balance, setBalance] = useState(null);
+  const [transactionDistribution, setTransactionDistribution] = useState({});
+  const [transactionAmounts, setTransactionAmounts] = useState([]);
+  const [recentTransactions, setRecentTransactions] = useState([]);
+  
+  const [accounts, setAccounts] = useState([]);
+  const [selectedAccount, setSelectedAccount] = useState("");
+  const navigate = useNavigate();
+  // Declare a variable to store the Chart instance
+  const transactionChartInstance = useRef(null);
 
     
 
 
-
+  // Effect to fetch user accounts
   useEffect(() => {
 
-      // Fetch user accounts
   const fetchAccounts = async () => {
     try {
       const response = await fetch("https://online-banking-app-production.up.railway.app/account/accounts", {
@@ -32,7 +35,7 @@ const Dashboard = () => {
           'Content-Type': 'application/json',
         },
       });
-
+      // Handle balance response
       if (response.ok) {
         const accountsData = await response.json();
         setAccounts(accountsData.accounts);
@@ -110,7 +113,6 @@ const Dashboard = () => {
 
         if (responseTransactionDistribution.ok) {
           const data = await responseTransactionDistribution.json();
-          // console.log(data);
           setTransactionDistribution(data);
         } else {
           console.error('Failed to fetch transaction distribution:', responseTransactionDistribution.status);
@@ -161,19 +163,11 @@ const Dashboard = () => {
           'Content-Type': 'application/json',
         },
       });
-
-      // if (response.ok)
-      // {
-      //   console.log("Account activated: "+response);
-      // }
-
       if (!response.ok) {
         console.error('Failed to set active account:', response.status);
-        // Handle error case if needed
       }
     } catch (error) {
       console.error('Error setting active account:', error.message);
-      // Handle error case if needed
     }
   };
 
@@ -211,6 +205,7 @@ const Dashboard = () => {
       }
     }, [transactionAmounts]);
 
+    // Function to handle user logout
     const handleLogout = () => {
       // Remove token from cookies
       Cookies.remove('authToken');
@@ -219,7 +214,7 @@ const Dashboard = () => {
       navigate('/');
     };
   
-
+    // Function to handle account change
     const handleAccountChange = (e) => {
       // console.log(selectedAccount);
       const selectedAccountId = e.target.value;
@@ -227,6 +222,7 @@ const Dashboard = () => {
       setActiveAccount(selectedAccountId);
     };
 
+    // Render the component
     return (
       <div className="dashboard">
             {/* Navigation Section */}
