@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -76,9 +76,9 @@ const TransferFundsPage = () => {
 
   };
 
-  useEffect(() => {
-    console.log('Updated Form Data:', formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log('Updated Form Data:', formData);
+  // }, [formData]);
   
 
   const handleTransfer = async (e) => {
@@ -86,8 +86,7 @@ const TransferFundsPage = () => {
 
     // Implement transfer funds to the recipient
     try {
-        // console.log(localStorage.getItem('authToken'));
-      const response = await fetch("http://localhost:5000/transaction/transfer", {
+      const response = await fetch("https://online-banking-app-production.up.railway.app/transaction/transfer", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -106,6 +105,7 @@ const TransferFundsPage = () => {
             setError('');
             // Reset form data
             setFormData({
+              accountNumber: "",
               recipientAccountNumber: "",
               amount: "",
             });
@@ -152,7 +152,7 @@ const TransferFundsPage = () => {
             <form className="transfer-form" onSubmit={handleTransfer}>
 
                 {/* Hidden input for accountNumber */}
-                <label htmlFor="senderAccountNumber">Sender Acc No:</label>
+                <label htmlFor="accountNumber">Sender Acc No:</label>
                 <input type="text" name="accountNumber" value={formData.accountNumber} onChange={handleChange} required/>
 
                 <label htmlFor="recipientAccountNumber">Recipient Acc No:</label>
