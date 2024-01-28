@@ -86,7 +86,7 @@ const TransferFundsPage = () => {
 
     // Implement transfer funds to the recipient
     try {
-      const response = await fetch("https://online-banking-app-production.up.railway.app/transaction/transfer", {
+      const response = await fetch("https://online-banking-app-production-0b9c.up.railway.app/transaction/transfer", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

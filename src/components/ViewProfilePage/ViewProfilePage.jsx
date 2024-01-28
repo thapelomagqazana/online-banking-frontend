@@ -26,7 +26,7 @@ const ViewProfilePage = () => {
 
           // Fetch user accounts based on the userId
           // const userId = userData._id; // Assuming the userId is available in the user data
-          const accountsResponse = await fetch("https://online-banking-app-production.up.railway.app/account/accounts", {
+          const accountsResponse = await fetch("https://online-banking-app-production-0b9c.up.railway.app/account/accounts", {
             method: "GET",
             headers: {
               "Authorization": `Bearer ${Cookies.get('authToken') || ''}`,

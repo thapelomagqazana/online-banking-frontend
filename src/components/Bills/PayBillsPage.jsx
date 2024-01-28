@@ -43,7 +43,7 @@ const PayBillsPage = () => {
     // Implement logic to pay the bill
     try {
         
-      const response = await fetch("https://online-banking-app-production.up.railway.app/bill/pay", {
+      const response = await fetch("https://online-banking-app-production-0b9c.up.railway.app/bill/pay", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

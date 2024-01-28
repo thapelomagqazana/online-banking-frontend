@@ -49,7 +49,7 @@ const RegisterPage = () => {
     // Send registration data to the server
     try
     {
-      const response = await fetch("https://online-banking-app-production.up.railway.app/auth/register", {
+      const response = await fetch("https://online-banking-app-production-0b9c.up.railway.app/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

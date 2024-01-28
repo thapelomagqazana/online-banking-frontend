@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   const fetchAccounts = async () => {
     try {
-      const response = await fetch("https://online-banking-app-production.up.railway.app/account/accounts", {
+      const response = await fetch("https://online-banking-app-production-0b9c.up.railway.app/account/accounts", {
         method: "GET",
         headers: {
           'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
@@ -63,7 +63,7 @@ const Dashboard = () => {
     const fetchDashboardData = async (accountId) => {
       try {
         // Fetch user's account balance from the server
-        const responseBalance = await fetch(`https://online-banking-app-production.up.railway.app/account/balance?accountId=${accountId}`, {
+        const responseBalance = await fetch(`https://online-banking-app-production-0b9c.up.railway.app/account/balance?accountId=${accountId}`, {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
@@ -83,7 +83,7 @@ const Dashboard = () => {
         }
 
         // Fetch recent transactions
-        const responseRecentTransactions = await fetch(`https://online-banking-app-production.up.railway.app/transaction/recent?accountId=${accountId}`, {
+        const responseRecentTransactions = await fetch(`https://online-banking-app-production-0b9c.up.railway.app/transaction/recent?accountId=${accountId}`, {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,
@@ -103,7 +103,7 @@ const Dashboard = () => {
         }
 
         // Fetch transaction distribution
-        const responseTransactionDistribution = await fetch(`https://online-banking-app-production.up.railway.app/transaction/transaction-distribution?accountId=${accountId}`, {
+        const responseTransactionDistribution = await fetch(`https://online-banking-app-production-0b9c.up.railway.app/transaction/transaction-distribution?accountId=${accountId}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${Cookies.get('authToken') || ''}`,
@@ -120,7 +120,7 @@ const Dashboard = () => {
         }
 
         // Fetch transaction amounts for visualization
-        const responseTransactionAmounts = await fetch(`https://online-banking-app-production.up.railway.app/transaction/transaction-amounts?accountId=${accountId}`, {
+        const responseTransactionAmounts = await fetch(`https://online-banking-app-production-0b9c.up.railway.app/transaction/transaction-amounts?accountId=${accountId}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${Cookies.get('authToken') || ''}`,
@@ -156,7 +156,7 @@ const Dashboard = () => {
     // Function to set the selected account as active
   const setActiveAccount = async (accountId) => {
     try {
-      const response = await fetch(`https://online-banking-app-production.up.railway.app/account/set-active/${accountId}`, {
+      const response = await fetch(`https://online-banking-app-production-0b9c.up.railway.app/account/set-active/${accountId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${Cookies.get('authToken') || ''}`,

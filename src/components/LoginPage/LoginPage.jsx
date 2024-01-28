@@ -33,7 +33,7 @@ const LoginPage = () => {
     // Send login data to the server
     try
     {
-      const response = await fetch("https://online-banking-app-production.up.railway.app/auth/login", {
+      const response = await fetch("https://online-banking-app-production-0b9c.up.railway.app/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
